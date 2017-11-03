@@ -23,4 +23,7 @@ class Choice(models.Model):
     def __str__(self):
         return self.choice_text
 
-
+class PictureView(models.Model):
+    picture_text = "picture"
+    def __str__(self):
+        return self.picture_text

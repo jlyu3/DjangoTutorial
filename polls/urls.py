@@ -4,7 +4,11 @@ from . import views
 app_name = 'polls'
 urlpatterns = [
     # ex: /polls/
+    # syntax: url(regex,view,kwargs,name)
+    # When Django finds a regex math, it calss the specified view func
     url(r'^$', views.IndexView.as_view(), name='index'),
+    # ex: /polls/picture
+    url(r'pictureSlideshow.html/$', views.PictureView.as_view(), name = 'picture'),
     # ex: /polls/5/
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
     # ex: /polls/5/results/

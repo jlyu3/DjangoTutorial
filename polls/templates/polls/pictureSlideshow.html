@@ -1,0 +1,46 @@
+<html>
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="wrapper" style="height:600px; width:900px; margin: 0 auto; background-color: green">
+        <img id="image" src="../../static/polls/images/output1.jpg" style="width:800px; margin: 0 auto; display: block;">
+        <p id="imageIndexText"></p>
+    </div>
+</body>
+
+<script>
+    var maxIndex = 120;
+    var imageList = [];
+
+    for (var i = 1; i < maxIndex; i++) {
+        imageList.push('../../static/polls/images/output' + i + '.jpg');
+    }
+
+    /**
+    setInterval(function(){
+    	document.getElementById('image').src = imageList[index];
+    	index = (index+1) % imageList.length,
+    },1000);
+    **/
+
+    var index = 0;
+    var wrapperVariable = document.getElementById('wrapper');
+
+    wrapperVariable.addEventListener("mousewheel", function(event) {
+
+        document.getElementById('image').src = imageList[index];
+        index = (index + 1) % imageList.length;
+        document.getElementById('imageIndexText').innerHTML = (index + 1) + ' of ' + (imageList.length + 1);
+        return false;
+    }, false);
+</script>
+
+</html>
