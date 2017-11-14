@@ -1,5 +1,9 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from . import views
+from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 app_name = 'polls'
 urlpatterns = [
@@ -15,4 +19,6 @@ urlpatterns = [
     url(r'^(?P<pk>[0-9]+)/results/$', views.ResultsView.as_view(), name='results'),
     # ex: /polls/5/vote/
     url(r'^(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),
-]
+    # for display frame in model
+    url(r'^frameFromModel.html/$', views.frameFromModel, name='frameFromModel'),
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

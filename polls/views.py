@@ -2,14 +2,14 @@ from django.shortcuts import render
 import django.http
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
-from .models import Question, Choice
-from django.shortcuts import render, get_object_or_404
+from .models import Question, Choice, FrameModel
+from django.shortcuts import render, get_object_or_404, render_to_response
 #from django.http import Http404
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
-from django.views import View
-from django.views.generic.base import RedirectView
+#from django.views import View
+#from django.views.generic.base import RedirectView
 from django.views.generic.base import TemplateView
 
 # Create your views here.
@@ -72,4 +72,9 @@ def vote(request, question_id):
 class PictureView(TemplateView):
     template_name = 'polls/pictureSlideshow.html'
 
+
+def frameFromModel(request):
+    img=FrameModel.objects.all() #.order_by('-id')
+
+    return render(request,'^frameFromModel.html',{"img":img})
 

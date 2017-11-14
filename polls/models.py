@@ -1,6 +1,6 @@
+import datetime
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-import datetime
 from django.utils import timezone
 
 # Create your models here.
@@ -27,3 +27,6 @@ class PictureView(models.Model):
     picture_text = "picture"
     def __str__(self):
         return self.picture_text
+
+class FrameModel(models.Model):
+    image = models.ImageField(upload_to='frame_folder', blank=True)
