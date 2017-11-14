@@ -74,7 +74,9 @@ class PictureView(TemplateView):
 
 
 def frameFromModel(request):
-    img=FrameModel.objects.all() #.order_by('-id')
+    img = FrameModel.objects.all() #.order_by('-id')
+    args = {'imageToShow':img}
+    return render(request,'polls/frameFromModel.html',args)
 
-    return render(request,'^frameFromModel.html',{"img":img})
+
 
