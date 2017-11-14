@@ -1,13 +1,16 @@
-# from django.shortcuts import render
+from django.shortcuts import render
 import django.http
 from django.http import HttpResponse, HttpResponseRedirect
-# from django.template import loader
-from .models import Question, Choice
-from django.shortcuts import render, get_object_or_404
+from django.template import loader
+from .models import Question, Choice, FrameModel
+from django.shortcuts import render, get_object_or_404, render_to_response
 #from django.http import Http404
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
+#from django.views import View
+#from django.views.generic.base import RedirectView
+from django.views.generic.base import TemplateView
 
 # Create your views here.
 class IndexView(generic.ListView):
@@ -64,5 +67,16 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
+
+class PictureView(TemplateView):
+    template_name = 'polls/pictureSlideshow.html'
+
+
+def frameFromModel(request):
+    img = FrameModel.objects.all() #.order_by('-id')
+    args = {'imageToShow':img}
+    return render(request,'polls/frameFromModel.html',args)
+
 
 

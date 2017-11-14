@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Question, Choice
+from .models import Question, Choice, FrameModel
 
 # Register your models here.
 class ChoiceInline(admin.TabularInline):
@@ -16,5 +16,13 @@ class QuestionAdmin(admin.ModelAdmin):
     list_filter = ['pub_date']
     search_fields = ['question_text']
 
+class FrameAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None,{'fields': ['image']}),
+    ]
+
+
+
 admin.site.register(Question, QuestionAdmin)
+admin.site.register(FrameModel,FrameAdmin)
 
