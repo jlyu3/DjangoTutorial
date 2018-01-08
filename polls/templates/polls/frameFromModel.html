@@ -3,7 +3,9 @@
 
 <body>
 
-    {{imageToShow}}
+    {% for n in imageToShow %}
+    <img src="{{ n.frameToShow.url }}" /> {% endfor %}
+
 </body>
 
 </html>

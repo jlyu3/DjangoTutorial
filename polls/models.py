@@ -29,4 +29,4 @@ class PictureView(models.Model):
         return self.picture_text
 
 class FrameModel(models.Model):
-    image = models.ImageField(upload_to='frame_folder', blank=True)
+    frameToShow = models.ImageField(upload_to='frame_folder', blank=True)

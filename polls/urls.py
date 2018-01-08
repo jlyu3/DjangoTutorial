@@ -20,5 +20,8 @@ urlpatterns = [
     # ex: /polls/5/vote/
     url(r'^(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),
     # for display frame in model
-    url(r'frameFromModel.html/$', views.frameFromModel, name='frameFromModel'),
+    url(r'^frameFromModel/$', views.frameFromModel, name='frameFromModel'),
+
+    
+
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
